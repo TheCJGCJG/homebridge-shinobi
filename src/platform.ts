@@ -80,7 +80,10 @@ export class ShinobiHomebridgePlatform implements DynamicPlatformPlugin {
 
             this.log.debug(`fetching from Shinobi API: ${url}`);
 
-            fetch(url)
+            fetch(url, {
+                headers: this.config.shinobi_api_http_headers ?
+                    this.config.shinobi_api_http_headers.reduce((result, { name, value }) => { result[name]=value; return result }, {}) : {}
+            })
                 .then(res => res.json())
                 .then(shinobiConfig => {
                     return {

@@ -85,7 +85,10 @@ export class ShinobiStreamingDelegate implements CameraStreamingDelegate {
         this.platform.log.debug('handleSnapshotRequest: '
             + `${this.monitor.monitorConfig.monitor_id} => ${JSON.stringify(request)} from ${this.imageSource}`);
 
-        fetch(this.imageSource)
+        fetch(this.imageSource, {
+            headers: this.config.shinobi_api_http_headers ?
+                this.config.shinobi_api_http_headers.reduce((result, { name, value }) => { result[name]=value; return result }, {}) : {}
+        })
             .then(res => res.buffer())
             .then(buffer => {
                 this.platform.log.debug('handleSnapshotRequest() success');
