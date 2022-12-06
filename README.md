@@ -17,6 +17,12 @@ Example `config.json` entry:
     {
         "platform": "Shinobi",
         "shinobi_api": "http://x.x.x.x:8080",
+        "shinobi_api_http_headers": [
+            {
+                "name": "X-Some-Dummy-Header",
+                "value": "A dummy header value"
+            }
+        ],
         "api_key": "xxx",
         "group_key": "house",
         "monitors": [
@@ -38,6 +44,9 @@ Example `config.json` entry:
 Where:
 
 * `shinobi_api` is the base URL for the [Shinobi API](https://shinobi.video/docs/api)
+* `shinobi_api_http_headers` contains a list of HTTP headers to append to all requests to shinobi consisting of:
+    * `name` - Name of the HTTP header
+    * `value` - Value of the HTTP header
 * `api_key` is the Shinobi API key (configured in the Shinobi dashboard API menu)
 * `group_key` is a Shinobi group key
 * `monitors` contains a list of monitors consisting of:
