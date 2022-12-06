@@ -39,6 +39,26 @@
           }
         }
       },
+      "shinobi_api_http_headers": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "name",
+            "value"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the HTTP header"
+            },
+            "value": {
+              "type": "string",
+              "description": "The value of the HTTP header"
+            }
+          }
+        }
+      },
       "web_hook_port": {
         "type": "number",
         "description": "The port that the platform should listen on for motion event webhooks from Shinobi.",
